@@ -1,0 +1,11 @@
+{% extends "BamazonApp/base.html" %}
+
+{% block content %}
+	<div class="m-5">
+	    <h3 class="mb-3">{{ author.username }}</h3>
+	    <h5>Books:</h5>
+		{% for book in author.books.all %}
+			<a href="{{ book.get_absolute_url }}" class="card-link">{{ book.title }}</a><br>
+		{% endfor %}
+	</div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "BamazonApp/base.html" %}
+
+{% block content %}
+    {% for book in page_obj %}
+		<div class="card mt-3" style="width: 40rem; margin: 0 auto;">
+			<div class="card-body">
+				<h5 class="card-title">{{ book.title }}</h5>
+				<p class="card-text">{{ book.description }}</p>
+				<a href="{{ book.get_absolute_url }}" class="btn btn-primary mb-3">Open</a><br>
+					{% for author in book.authors.all %}
+						<a href="{{ author.get_absolute_url }}" class="card-link">{{ author.username }}</a>
+					{% endfor %}
+			</div>
+		</div>
+    {% endfor %}
+    {% include "BamazonApp/includes/paginator.html" %}
+{% endblock content %}
